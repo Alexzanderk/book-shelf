@@ -1,0 +1,29 @@
+{
+  "name": "book-shelf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexzanderk/book-shelf.git"
+  },
+  "author": "Alexzanderk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexzanderk/book-shelf/issues"
+  },
+  "homepage": "https://github.com/Alexzanderk/book-shelf#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "moment-js": "^1.1.15",
+    "mongoose": "^5.3.3"
+  }
+}
