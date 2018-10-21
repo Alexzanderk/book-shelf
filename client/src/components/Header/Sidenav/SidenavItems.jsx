@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+import { connect } from 'react-redux';
 
-const SidenavItems = (props) => {
-    const items = [
+const SidenavItems = ({ users }) => {
+	const items = [
 		{
 			type: 'navItem',
 			icon: 'home',
@@ -16,65 +17,71 @@ const SidenavItems = (props) => {
 			icon: 'file-text-o',
 			text: 'My Profile',
 			link: '/user',
-			stricted: false
+			stricted: true
 		},
 		{
 			type: 'navItem',
 			icon: 'file-text-o',
 			text: 'Add Admins',
 			link: '/user/register',
-			stricted: false
+			stricted: true
 		},
 		{
 			type: 'navItem',
 			icon: 'sign-in',
 			text: 'Login',
 			link: '/login',
-			stricted: false
+			stricted: false,
+			exclude: true
 		},
 		{
 			type: 'navItem',
 			icon: 'file-text-o',
 			text: 'My Reviews',
 			link: '/user/reviews',
-			stricted: false
+			stricted: true
 		},
 		{
 			type: 'navItem',
 			icon: 'file-text-o',
 			text: 'Add Reviews',
 			link: '/user/add',
-			stricted: false
+			stricted: true
 		},
 		{
 			type: 'navItem',
 			icon: 'sign-out',
 			text: 'Logout',
 			link: '/user/logout',
-			stricted: false
+			stricted: true
 		}
-    ];
+	];
 
-    const element = (item, i) => (
-        <div key={i} className={item.type}>
-            <Link to={item.link}>
-                <FontAwesome name={item.icon} />
-                {item.text}
-            </Link>
-        </div>
-    )
-    
-    const showItems = () => (
-        items.map((item, i) => {
-            return element(item, i)
-        })
-    )
+	const element = (item, i) => (
+		<div key={i} className={item.type}>
+			<Link to={item.link}>
+				<FontAwesome name={item.icon} />
+				{item.text}
+			</Link>
+		</div>
+	);
 
-  return (
-    <div>
-      {showItems()}
-    </div>
-  )
-}
+	const showItems = () =>
+		users.login
+			? items.map((item, i) => {
+					if (users.login.isAuth) {
+						return !item.exclude ? element(item, i) : null;
+					} else {
+						return !item.stricted ? element(item, i) : null;
+					}
+			  })
+			: null;
 
-export default SidenavItems
+	return <div>{showItems()}</div>;
+};
+
+const mapStateToProps = state => ({
+	users: state.users
+});
+
+export default connect(mapStateToProps)(SidenavItems);

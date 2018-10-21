@@ -16,7 +16,7 @@ module.exports = {
 		let id = req.query.id;
 		Book.findById(id)
 			.then(book => {
-				res.status(200).json({ book });
+				res.status(200).send( book );
 			})
 			.catch(err => {
 				res.status(400).send(err);
@@ -57,10 +57,10 @@ module.exports = {
 	//PATCH /api/book_update
 	updateBook(req, res) {
 		Book.findByIdAndUpdate(req.body._id, req.body, { new: true })
-			.then(newBook => {
+			.then(doc => {
 				res.json({
 					success: true,
-					newBook
+					doc
 				});
 			})
 			.catch(err => {
@@ -87,7 +87,7 @@ module.exports = {
 				res.json({ success: true, user });
 			})
 			.catch(err => {
-				res.status(400).json({ success: false, err });
+				res.status(201).json({ success: false, err });
 			});
 	},
 
@@ -96,7 +96,7 @@ module.exports = {
 		User.findOne({ email: req.body.email })
 			.then(user => {
 				if (!user) {
-					res.status(400).json({
+					res.status(201).json({
 						isAuth: false,
 						message: 'Auth failed, wrong email!'
 					});
@@ -156,7 +156,7 @@ module.exports = {
 		User.find()
 			.then(users => {
 				if (!users) return res.status(400).send(users);
-				res.json({ users });
+				res.send( users );
 			})
 			.catch(err => res.status(400).send(err));
 	},
@@ -165,7 +165,7 @@ module.exports = {
 	getUserPosts(req, res) {
 		Book.find({ ownerId: req.query.user })
 			.then(books => {
-				res.json({ books });
+				res.send( books );
 			})
 			.catch(err => res.status(400).json(err));
 	}

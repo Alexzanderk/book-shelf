@@ -18,7 +18,7 @@ const User = new Schema({
 			'Неверный формат адреса электронной почты.'
 		]
 	},
-	password: { type: String, required: true },
+	password: { type: String, required: true, minlength:4 },
 	name: { type: String, maxlength: 100 },
 	lastname: { type: String, maxlength: 100 },
 	role: { type: Number, default: 0 },
@@ -57,14 +57,6 @@ User.methods.deleteToken = function() {
 			});
 	})
 };
-
-// User.methods.deleteToken = function(token, cb) {
-// 	let user = this;
-// 	user.updateOne({ $unset: { token: 1 } }, (err, user) => {
-// 			if (err) return cb(err);
-// 			cb(null, user);
-// 		});
-// };
 
 User.statics.findByToken = function(token) {
 	let user = this;
