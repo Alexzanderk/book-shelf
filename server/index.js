@@ -1,6 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const path = requre('path');
+const path = require('path');
 
 const config = require('./config');
 const { connection } = require('./service/db');
