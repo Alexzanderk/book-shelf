@@ -28,7 +28,7 @@ class BookView extends Component {
 						<div>
 							<span>Pages:</span> {books.book.pages}
 						</div>
-						<div><span>Proce:</span> {books.book.price}</div>
+						<div><span>Price:</span> {books.book.price}</div>
 					</div>
 					<div className="right">
 						<span>Rating</span>

@@ -53,7 +53,7 @@ class AddBook extends Component {
 					<div className="form_element">
 						<input
 							type="text"
-							placeholder="Enter your name"
+							placeholder="Enter the name"
 							value={this.state.formData.name}
 							onChange={event => this.handleInput(event, 'name')}
 						/>
