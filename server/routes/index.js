@@ -17,19 +17,19 @@ const {
 	getUserPosts
 } = require('../controllers');
 
-router.get('/api/auth', auth, getAuth);
+router.get('/auth', auth, getAuth);
 
-router.get('/api/book', getBook);
-router.get('/api/books', getBooks);
-router.post('/api/book_create', createBook);
-router.patch('/api/book_update', updateBook);
-router.delete('/api/book_delete', deleteBook);
+router.get('/book', getBook);
+router.get('/books', getBooks);
+router.post('/book_create', createBook);
+router.patch('/book_update', updateBook);
+router.delete('/book_delete', deleteBook);
 
-router.post('/api/register', registration);
-router.post('/api/login', login);
-router.get('/api/logout', auth, logout);
-router.get('/api/getReviewer', getReviewer);
-router.get('/api/users', getUsers);
-router.get('/api/user_posts', getUserPosts);
+router.post('/register', registration);
+router.post('/login', login);
+router.get('/logout', auth, logout);
+router.get('/getReviewer', getReviewer);
+router.get('/users', getUsers);
+router.get('/user_posts', getUserPosts);
 
 module.exports = router;
