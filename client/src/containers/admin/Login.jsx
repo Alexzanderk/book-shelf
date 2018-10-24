@@ -55,6 +55,11 @@ class Login extends Component {
 					<div className='error'>
 						{user.login ? <div>{user.login.message}</div> : null}
 					</div>
+					<div>
+						<h5>Enter to app</h5>
+						<p>test@test.com</p>
+						<p>test</p>
+					</div>
 				</form>
 			</div>
 		);
